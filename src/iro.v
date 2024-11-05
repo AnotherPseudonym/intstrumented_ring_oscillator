@@ -26,7 +26,7 @@ module iro (
     end
 
     // A simple ring oscillator needs an odd number of stages > 2, but in case 3 is too fast, 5 is the minimum.
-    wire [N_STAGES:0] connect;
+    wire [N_STAGES-1:0] connect;
     ro_stage ro0  (.enable (enable), .in0 (connect[24]), .in1 (connect[24]), .in_select ( 1'b0),           .seed (seed[11]), .out (connect[ 0]));
     ro_stage ro1  (.enable (enable), .in0 (connect[ 0]), .in1 (    1'b0    ),   .in_select (  hold ),      .seed (seed[12]), .out (connect[ 1]));
     ro_stage ro2  (.enable (enable), .in0 (connect[ 1]), .in1 (connect[ 1]), .in_select ( 1'b0 ),          .seed (seed[13]), .out (connect[ 2]));
